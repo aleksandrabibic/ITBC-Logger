@@ -34,12 +34,20 @@ public class User {
         return username;
     }
 
-    public void setPassword(String password) {
-        if (password.length() < 8 & password.matches(".*[a-zA-Z].*") & password.matches(".*[0-9].*"))
-            throw new UserValidationException("Password must at least 8 characters and one letter and one number");
-        this.password = password;
+    public void setUsername(String username) {
+        if (username.length()<3) throw new UserValidationException("Username must at least 3 characters");
+        this.username = username;
     }
 
+    public void setPassword(String password) {
+        Pattern characters = Pattern.compile("[^a-zA-Z]", Pattern.CASE_INSENSITIVE);
+        Pattern numbers = Pattern.compile("[^0-9]", Pattern.CASE_INSENSITIVE);
+        Matcher matcherChar =characters.matcher(password);
+        Matcher matcherNum= numbers.matcher(password);
+        if (password.length()<8) throw new UserValidationException("Password must at least 8 characters");
+        if(!matcherChar.find() || !matcherNum.find()) throw new UserValidationException("Password at least one letter and one number");
+        this.password = password;
+    }
     public void setEmail(String email) {
         Pattern pattern = Pattern.compile("^(.+)@(.+)$", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(email);

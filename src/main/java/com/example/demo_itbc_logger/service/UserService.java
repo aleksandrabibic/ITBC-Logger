@@ -21,7 +21,7 @@ public class UserService {
     public String login(String account, String password) {
         User dbUser = userRepository.findByUsername(account);
         if (dbUser == null) dbUser = userRepository.findByEmail(account);
-        if (dbUser == null) throw new UserLoginException("Incorrect email/username");
+        if (dbUser == null) throw new UserLoginException("Incorrect email or username");
         if (!dbUser.getPassword().equals(password)) throw new UserLoginException("Incorrect password");
         return dbUser.getUsername();
     }
