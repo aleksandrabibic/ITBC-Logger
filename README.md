@@ -1,4 +1,4 @@
-Technologies (Oracle OpenJDK version 18, Microsoft SQL Server Management Studio 18, Postman Spring, Spring Boot)
+Technologies (Oracle OpenJDK version 18, Microsoft SQL Server Management Studio 18, Postman, Spring, Spring Boot)
 # ITBC-FinalProject_Logger:
 
 ## Client
